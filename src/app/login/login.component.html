@@ -1,0 +1,29 @@
+<div class="mar">
+
+
+    <div class="card">
+        <h4 class="card-header">Login</h4>
+        <div class="card-body">
+            <form [formGroup]="login">
+                <div class="form-group">
+                    <label for="userName">Username</label>
+                    <input type="text" formControlName="userName" class="form-control">
+
+
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" formControlName="password" class="form-control">
+
+
+                </div>
+                <div class="form-group">
+                    <button (click)="loginbtn()" class="btn btn-primary" [disabled]="!login.valid">
+                        Login
+                    </button>
+                    <a class="btn btn-link" routerLink="../reg">Register</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

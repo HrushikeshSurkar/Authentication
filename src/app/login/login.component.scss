@@ -1,0 +1,23 @@
+.mar {
+    margin-top: 13%;
+    margin-left: 35%;
+    margin-right: 32%;
+}
+
+input,
+button {
+    margin: 5px;
+}
+
+@media only screen and (max-width: 800px) {
+    .mar {
+        margin-top: 20%;
+        margin-left: 15%;
+        margin-right: 15%;
+    }
+
+    input,
+    button {
+        margin: 5px;
+    }
+}

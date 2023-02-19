@@ -1,0 +1,88 @@
+<div class="container mt-5">
+
+
+    <h1>Users</h1>
+    <a class="btn btn-sm btn-success mb-2" (click)="open(content)">Add User</a>
+    <a routerLink="../reg" class="btn btn-sm btn-warning mb-2">Back</a>
+    <table class="table table-striped ">
+        <thead>
+            <tr>
+
+                <th style="width: 25%">First Name</th>
+                <th style="width: 25%">Last Name</th>
+                <th style="width: 25%">Username</th>
+                <th style="width: 25%">password</th>
+                <th style="width: 25%">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let i of signupList; let j = index">
+                <td>{{j+1}}</td>
+                <td>{{i.firstName}}</td>
+                <td>{{i.lastName}}</td>
+                <td>{{i.userName}}</td>
+                <td>{{i.password}}</td>
+
+                <td style="white-space: nowrap">
+                    <a class="btn btn-sm btn-primary mr-1" (click)="open(content)" (click)="edit(j)">Edit</a> &nbsp;
+                    <button class="btn btn-sm btn-danger btn-delete-user">
+                        <span (click)="delete(j)">Delete</span>
+                    </button>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+
+
+
+
+<!-- =============modal code ========== -->
+
+<ng-template #content let-offcanvas>
+    <div class="offcanvas-header">
+        <h4 class="offcanvas-title" id="offcanvas-basic-title">Add User</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="offcanvas.dismiss('Cross click')"></button>
+    </div>
+    <div class="offcanvas-body">
+        <form>
+            <div class="mb-3">
+
+                <div class="card-body">
+                    <form [formGroup]="signup">
+                        <div class="form-group">
+                            <label for="firstName">First Name</label>
+                            <input type="text" formControlName="firstName" class="form-control">
+
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name</label>
+                            <input type="text" formControlName="lastName" class="form-control">
+
+                        </div>
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" formControlName="userName" class="form-control">
+
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" formControlName="password" class="form-control">
+
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </form>
+
+
+        <div class="text-end">
+            <button type="button" class="btn btn-outline-dark" (click)="save()" *ngIf="savebtnclick=='true'"
+                (click)="offcanvas.close('Save click')">Save</button>
+            <button type="button" class="btn btn-outline-dark" (click)="update()" *ngIf="savebtnclick == 'false'"
+                (click)="offcanvas.close('Save click')">Update</button>
+        </div>
+    </div>
+</ng-template>
